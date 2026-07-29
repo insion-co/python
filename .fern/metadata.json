@@ -1,0 +1,11 @@
+{
+  "cliVersion": "5.75.1",
+  "generatorName": "fernapi/fern-python-sdk",
+  "generatorVersion": "5.20.0",
+  "generatorConfig": {
+    "client_class_name": "InsionClient"
+  },
+  "originGitCommit": "d549a1ae250d149189be58081302356d0f9819c3",
+  "originGitCommitIsDirty": true,
+  "invokedBy": "manual"
+}

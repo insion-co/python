@@ -4,3 +4,16 @@ LICENSE.md
 pyproject.toml
 
 .github/
+
+# Local Python environments and generated build/test artifacts are not SDK
+# source. Fern must ignore them as well as Git, otherwise local generation can
+# treat files already present in its output directory as generated output.
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.venv/
+**/__pycache__/
+*.py[cod]
+build/
+dist/
+insion.egg-info/

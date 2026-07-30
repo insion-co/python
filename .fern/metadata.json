@@ -3,9 +3,10 @@
   "generatorName": "fernapi/fern-python-sdk",
   "generatorVersion": "5.20.0",
   "generatorConfig": {
+    "package_name": "insion",
     "client_class_name": "InsionClient"
   },
-  "originGitCommit": "d549a1ae250d149189be58081302356d0f9819c3",
+  "originGitCommit": "35704c1bf6b3c6e1fa3b33971a4753130557ef8e",
   "originGitCommitIsDirty": true,
   "invokedBy": "manual"
 }

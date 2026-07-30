@@ -1,0 +1,6 @@
+.fernignore
+.gitignore
+LICENSE.md
+pyproject.toml
+
+.github/

@@ -9,6 +9,10 @@ on:
 permissions:
   contents: read
 
+defaults:
+  run:
+    working-directory: /tmp
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -34,10 +38,10 @@ jobs:
           cache: pip
 
       - name: Install package and test dependencies
-        run: python -m pip install --upgrade --editable ".[aiohttp,dev]"
+        run: python -m pip install --upgrade --editable "${GITHUB_WORKSPACE}[aiohttp,dev]"
 
       - name: Test
-        run: pytest
+        run: pytest "$GITHUB_WORKSPACE/tests"
 
   package:
     runs-on: ubuntu-latest
@@ -56,14 +60,13 @@ jobs:
         run: python -m pip install --upgrade build twine
 
       - name: Build distributions
-        run: python -m build
+        run: python -m build --outdir "$GITHUB_WORKSPACE/dist" "$GITHUB_WORKSPACE"
 
       - name: Check distributions
-        run: python -m twine check dist/*
+        run: python -m twine check "$GITHUB_WORKSPACE"/dist/*
 
       - name: Test built wheel
         run: |
           python -m venv /tmp/insion-wheel-test
-          /tmp/insion-wheel-test/bin/python -m pip install dist/*.whl
-          cd /tmp
+          /tmp/insion-wheel-test/bin/python -m pip install "$GITHUB_WORKSPACE"/dist/*.whl
           /tmp/insion-wheel-test/bin/python -c "from insion import AsyncInsionClient, InsionClient"

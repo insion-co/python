@@ -17,7 +17,11 @@ class Record(UniversalBaseModel):
     client_url: typing_extensions.Annotated[
         typing.Optional[str], FieldMetadata(alias="clientUrl"), pydantic.Field(alias="clientUrl")
     ] = None
-    name: str
+    name: typing.Optional[str] = pydantic.Field(default=None)
+    """
+    Name or title of the record. Null when submitted using passthrough moderation.
+    """
+
     entity: str
     protected: bool
     metadata: typing.Optional[Metadata] = None
